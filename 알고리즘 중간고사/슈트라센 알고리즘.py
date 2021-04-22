@@ -62,31 +62,22 @@ def solve(A,B): # 문제해결 함수 # A와 B의 크기가 같아야한다 n(�
     C21 = matrix_add(M2,M4)
     C22 = matrix_add(matrix_add(matrix_sub(M1,M2),M3),M6)
     
-    print(C11)
-    print(C12)
-    print(C21)
-    print(C22)
+    for i in range(2):
+        for j in range(2):
+            print(C11[i][j],end=" ") # 각각에 for문이 돌아야함
+        for j in range(2):
+            print(C12[i][j],end=" ") # 각각에 for문이 돌아야함
+        print()
+    for i in range(2):
+        for j in range(2):
+           print(C21[i][j],end=" ")
+        for j in range(2):
+           print(C22[i][j],end=" ")
+        print()
 
 
-    # result_lst =[]
-    # result_lst.append(C11)
-    # result_lst.append(C12)
-    # result_lst.append(C21)
-    # result_lst.append(C22)
-    # return result
 
 
-
-
-
-    # print(result_lst[0][0],end=" ")
-    # print(result_lst[1][0])
-    # print(result_lst[0][1],end=" ")
-    # print(result_lst[1][1])
-    # print(result_lst[2][0],end=" ")
-    # print(result_lst[3][0])
-    # print(result_lst[2][1],end=" ")
-    # print(result_lst[3][1])
 
             
 n = int(input())
