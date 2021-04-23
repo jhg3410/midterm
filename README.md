@@ -1,3 +1,34 @@
+슈트라센 알고리즘이란 기존의 행렬곱셈알고리즘에서 시간복잡도를 줄인 알고리즘이다.
+그래서 행렬곱셈을 먼저 구현하고 시간복잡도를 알아보고 다음에 슈트라센을 구현한 다음 알아보는 순서로 진행하겠습니다.
+먼저 행렬곱셈은
+```{.python}
+print("A행렬의 각 크기를 입력하세요")
+A_n ,A_m = map(int,input().split()) # A_n ,A_m은 각 A행렬의 행과 열
+A = []
+for i in range(A_n):
+    A.append(list(map(int,input().split())))
+print("B행렬의 각 크기를 입력하세요")
+B_n, B_m = map(int,input().split()) # B_n ,B_m은 각 B행렬의 행과 열
+#  사실 행렬 곱셈에선 A의 행과 B의 열이 같아야해서 같은 변수로 해도 되지만 보기좋게 그냥 나누었다
+B = []
+for i in range(B_n):
+    B.append(list(map(int,input().split())))
+
+C = [[0]*B_m for _ in range(A_n)]  # 행렬 A와 B를 곱한 행렬을 저장하기 위해 0으로 배열을 먼저 초기화 
+
+for n in range(A_n):  
+    for k in range(B_m):
+        for m in range(A_m):  # B_n으로 해도 상관없다 같기 때문에
+            C[n][k] += A[n][m] * B[m][k] 
+            
+print("결과값:")
+for c in C:
+    for i in c:
+        print(i,end=" ")
+    print()    
+```
+  
+
 ```{.python}
 def matrix_add(A,B):  # 행렬 덧셈
     n = len(A) # B해도 상관 없다
