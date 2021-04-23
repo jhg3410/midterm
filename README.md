@@ -125,8 +125,8 @@ for _ in range(n):
 solve(A,B)  # 함수 호출
 ```  
 ### 코드 설명:  
-![image](https://user-images.githubusercontent.com/80373033/115869344-b420a080-a478-11eb-8540-c1c847af9b2b.png)  
 * 행렬 덧셈, 뺄셈  
+![image](https://user-images.githubusercontent.com/80373033/115869344-b420a080-a478-11eb-8540-c1c847af9b2b.png)  
 위 사진은 행렬 덧셈과 뺄셈 함수를 구현한 것이다. 
 매게 변수로 받아온 A또은 B의 길이를 가져온다 이는 행(열)의 길이이다.  
 그리고는 결과값을 저장할 배열을 초기화한다. 
