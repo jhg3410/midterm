@@ -1,6 +1,6 @@
 ### 슈트라센 알고리즘이란 기존의 행렬곱셈 알고리즘에서 시간복잡도를 줄인 알고리즘이다.  
 그래서 행렬곱셈을 먼저 구현하고 시간복잡도를 알아보고 다음에 슈트라센을 구현한 다음 알아보는 순서로 진행하겠습니다.  
-구현한 행렬곱셈의 코드는 다음과 같고 설명은 주석으로 하겠습니다.
+구현한 행렬곱셈의 코드는 다음과 같고 설명은 주석과 슈트라센 알고리즘에서 하겠습니다.
 ```.python
 print("A행렬의 각 크기를 입력하세요")
 A_n ,A_m = map(int,input().split()) # A_n ,A_m은 각 A행렬의 행과 열
@@ -36,93 +36,36 @@ for c in C:
 * * *
 ### 슈트라센 알고리즘 구현
 ```{.python}
-def matrix_add(A,B):  # 행렬 덧셈
-    n = len(A) # B해도 상관 없다
-    C = []
-    for _ in range(n):
-        C.append([0]*n) # 결과를 넣을 배열 초기화
-    for i in range(n):
-        for j in range(n):
-            C[i][j] = A[i][j] + B[i][j]
-    return C
-def matrix_sub(A,B):  # 행렬 뺄셈
-    n = len(A)  
-    C = []
-    for _ in range(n):
-        C.append([0]*n) # 결과를 넣을 배열 초기화
-    for i in range(n):
-        for j in range(n):
-            C[i][j] = A[i][j] - B[i][j]
-    return C
-def matrix_mul(A,B):  # 행렬 곱셈
-    n = len(A)  
-    C = [[0]*n for i in range(n)] # 결과를 넣을 배열 초기화
-    for i in range(n):  
-        for j in range(n):
-            for k in range(n): 
-                C[i][j] += A[i][k] * B[k][j] 
-    return C
-def division(matrix):  # 행렬 나누기
-    n = len(A)
-    m = n//2
-    matrix_11=list([0] *m for i in range(m))  # 각 나눠질 배열 초기화
-    matrix_12=list([0] *m for i in range(m))
-    matrix_21=list([0] *m for i in range(m))
-    matrix_22=list([0] *m for i in range(m))
-    for i in range(m):
-        for j in range(m):
-            matrix_11[i][j]=(matrix[i][j])
-            matrix_12[i][j]=(matrix[i][j+m]) # +m 을 넣어야 각 분할된 영역에 맞게 들어간다
-            matrix_21[i][j]=(matrix[i+m][j])
-            matrix_22[i][j]=(matrix[i+m][j+m])
-    return matrix_11, matrix_12, matrix_21, matrix_22
+import time
 
 
-def solve(A,B): # 문제해결 함수 # A와 B의 크기가 같아야한다 n(행,열)은 2의 제곱이여야한다.
-    global n    # 기존 배열의 행(열)길이
-    m = len(A)  # 새롭게 들어오는 행(열)길이
-    if m == n//2: 
-        C = []
-        C = matrix_mul(A,B)   
-        return C
-
-    A11, A12, A21, A22 = division(A)  # 4분할로 나누기
-    B11, B12, B21, B22 = division(B)
-    M1 = solve(matrix_add(A11,A22),matrix_add(B11,B22))  # 나눈값들을 더한 다음 다시 solve함수 호출
-    M2 = solve(matrix_add(A21,A22),B11)
-    M3 = solve(A11,matrix_sub(B12,B22))
-    M4 = solve(A22,matrix_sub(B21,B11))
-    M5 = solve(matrix_add(A11,A12),B22)
-    M6 = solve(matrix_sub(A21,A11),matrix_add(B11,B12))
-    M7 = solve(matrix_sub(A12,A22),matrix_add(B21,B22))
-    C11 = matrix_add(matrix_sub(matrix_add(M1,M4),M5),M7)
-    C12 = matrix_add(M3,M5)
-    C21 = matrix_add(M2,M4)
-    C22 = matrix_add(matrix_add(matrix_sub(M1,M2),M3),M6)
-    for i in range(n//2):
-        # for j in range(n//2):        # 기본 반복문
-        #     print(C11[i][j],end=" ")
-        print(" ".join(str(C11[i][j])for j in range(n//2)),end= " ") # 한줄 반복문
-        print(" ".join(str(C12[i][j])for j in range(n//2)),end= " ")
-        print()
-    for i in range(n//2):
-        print(" ".join(str(C21[i][j])for j in range(n//2)),end= " ")
-        print(" ".join(str(C22[i][j])for j in range(n//2)),end= " ")
-        print()
-
-
-n = int(input())  # 행(열) 길이 (같기 때문에 n으로 통일)
-# print("A행렬을 입력하세요")
-A = []  
-for _ in range(n):
+print("A행렬의 각 크기를 입력하세요")
+A_n ,A_m = map(int,input().split()) # A_n ,A_m은 각 A행렬의 행과 열
+A = []
+for i in range(A_n):
     A.append(list(map(int,input().split())))
-
-# print("B행렬을 입력하세요")
+print("B행렬의 각 크기를 입력하세요")
+B_n, B_m = map(int,input().split()) # B_n ,B_m은 각 B행렬의 행과 열
+#  사실 행렬 곱셈에선 A의 행과 B의 열이 같아야해서 같은 변수로 해도 되지만 보기좋게 그냥 나누었다
 B = []
-for _ in range(n):
+for i in range(B_n):
     B.append(list(map(int,input().split())))
 
-solve(A,B)  # 함수 호출
+C = [[0]*B_m for _ in range(A_n)]  # 행렬 A와 B를 곱한 행렬을 저장하기 위해 0으로 배열을 먼저 초기화 
+
+start = time.time()
+
+for n in range(A_n):  
+    for k in range(B_m):
+        for m in range(A_m):  # B_n으로 해도 상관없다 같기 때문에
+            C[n][k] += A[n][m] * B[m][k]  # 그림으로 설명하기 
+print("결과값:")
+for c in C:
+    for i in c:
+        print(i,end=" ")
+    print()   
+
+print("기본 행렬 곱셈 알고리즘의 시간:",time.time()-start)
 ```  
 ### 코드 설명:  
 * 행렬 덧셈, 뺄셈  
@@ -168,14 +111,14 @@ n<sup>2.807</sup> 정도가 소요되어서 기본 행렬곱셈보다 더 빠른
 ![image](https://user-images.githubusercontent.com/80373033/115995835-ca189780-a617-11eb-942e-1544b256465a.png)  
 
 보면은 우리가 아는 결과와 다르다 왜냐면 기본 행렬곱셈에서의 행렬 덧셈보다 슈트라센에서의 행렬 덧셈이 더 많이 연산되기떄문이다.
-그럼에도 슈트라센이 더 시간복잡도가 낮은이유는 덧셈을 제외했기 때문이다. 그럴려면 n이 엄청 커야한다. 3제곱 한번이 많은 2제곱보다 커야하기때문이다.  
+그럼에도 슈트라센이 더 시간복잡도가 낮은이유는 덧셈을 제외했기 때문이다. 그럴려면 n이 엄청 커서 3제곱 한번이 많은 2제곱보다 커야하기때문이다.  
 * * *  
 ### 구현 후 의문점을 느끼고 어려움을 겪은 일  
 ![image](https://user-images.githubusercontent.com/80373033/115874594-3a3fe580-a47f-11eb-80d6-b75acf8b19c5.png)  
-이렇게 solve문을 짰었다 그러고는 많은 예시를 넣어도 값이 제대로 나오는 것을 확인하고 끝냈다 생각해 markdown 작성 중이였다.  
+처음엔 solve문을 이렇게 짰었다 그러고는 많은 예시를 넣어도 값이 제대로 나오는 것을 확인하고 끝냈다 생각해 markdown 작성 중이였다.  
 그러던중 의문점이 생겼다. 이러면 8/8 행렬을 넣어도 if 문이 7번 나온다는 것이다. 
 이렇게 되면 행렬 곱셈 함수가 호출되면서 작은 행렬의 행렬곱셈이 아닌 그저 길이를 2를 나눈 행렬이 곱셈 함수를 타게된다.
-이렇게 되어버리면 아무 의미가 없어진다. 이러면 시간복잡도가 곱셈연산이 1 줄어든 것 밖에 안된다...ㅠㅠ  
+이렇게 되어버리면 아무 의미가 없어진다. 이러면 시간복잡도가 곱셈연산이 1 줄어든 것 밖에 안된다.. 
 재귀 함수의 이해가 아직 부족한 느낌이다. 수업시간에 배웠던 분할정복ppt를 보면서 다시금 구현해보려한다.  
 분할 정복에 관해 다시 공부하니 알고보니 내가 구현한 코드에서는 합치는 함수를 구현을 안했던 것이다.  
 위 사진처럼 짰었던 이유가 사실 분할은 하는데 합치는 함수를 구현 할 생각을 못 하고 분할을 하면 원래 길이의 반까지만  
@@ -183,11 +126,9 @@ n<sup>2.807</sup> 정도가 소요되어서 기본 행렬곱셈보다 더 빠른
 그래서 다시 conquer 함수를 구현하고 if문의 조건을 수정한 다음 재귀 함수를 호출하면 원래 목적의 시간복잡도를 가진 슈트라센 알고리즘이 나올거라 믿는다.  
 그렇게 conquer을 짠 다음 각 c11,c12,c21,c22를 넣고 if문의 조건을 수정하니 원하던 알고리즘이 나오는게 확인되었다  
 
-
-
 * * *
 ### 출력문에서의 문제를 겪은 일:  
-(conquer 함수를 구현하지 않은 상태에서 겪었던 일이라 결과적으론 아무의미가 없었습니다)  
+(conquer 함수를 구현하지 않은 상태에서 겪었던 일이라 결과적으론 아무 의미가 없었습니다)  
 input()값:  
 4  
 1 2 3 4  
