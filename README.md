@@ -4,6 +4,46 @@
 ```.python
 import time
 
+
+print("A행렬의 각 크기를 입력하세요")
+A_n ,A_m = map(int,input().split()) # A_n ,A_m은 각 A행렬의 행과 열
+A = []
+for i in range(A_n):
+    A.append(list(map(int,input().split())))
+print("B행렬의 각 크기를 입력하세요")
+B_n, B_m = map(int,input().split()) # B_n ,B_m은 각 B행렬의 행과 열
+#  사실 행렬 곱셈에선 A의 행과 B의 열이 같아야해서 같은 변수로 해도 되지만 보기좋게 그냥 나누었다
+B = []
+for i in range(B_n):
+    B.append(list(map(int,input().split())))
+
+C = [[0]*B_m for _ in range(A_n)]  # 행렬 A와 B를 곱한 행렬을 저장하기 위해 0으로 배열을 먼저 초기화 
+
+start = time.time()
+
+for n in range(A_n):  
+    for k in range(B_m):
+        for m in range(A_m):  # B_n으로 해도 상관없다 같기 때문에
+            C[n][k] += A[n][m] * B[m][k]  # 그림으로 설명하기 
+print("결과값:")
+for c in C:
+    for i in c:
+        print(i,end=" ")
+    print()   
+
+print("기본 행렬 곱셈 알고리즘의 시간:",time.time()-start)
+```
+#### 출력값:  
+![image](https://user-images.githubusercontent.com/80373033/115834943-b969f500-a450-11eb-908e-5ec3dd02bfeb.png)
+
+위의 예제에서 처럼 4/4 행렬과 4/4행렬을 곱하면 8번의 곱셈과 4번의 뎃셈으로 구현된다.  
+그러면 사실상 덧셈은 곱셈에 비해 걸리는 시간이 낮아 묻히고 곱셈으로만 n<sup>3</sup>이 되어버린다  
+그래서 기본적인 행렬곱셈의 시간복잡도는 n<sup>3</sup>이다
+* * *
+### 슈트라센 알고리즘 구현
+```{.python}
+import time
+
 def matrix_add(A,B):  # 행렬 덧셈
     n = len(A) # B해도 상관 없다
     C = []
@@ -108,46 +148,6 @@ for c in C:
     print()
 
 print("슈트라센 알고리즘 시간:",time.time()-start)
-```
-#### 출력값:  
-![image](https://user-images.githubusercontent.com/80373033/115834943-b969f500-a450-11eb-908e-5ec3dd02bfeb.png)
-
-위의 예제에서 처럼 4/4 행렬과 4/4행렬을 곱하면 8번의 곱셈과 4번의 뎃셈으로 구현된다.  
-그러면 사실상 덧셈은 곱셈에 비해 걸리는 시간이 낮아 묻히고 곱셈으로만 n<sup>3</sup>이 되어버린다  
-그래서 기본적인 행렬곱셈의 시간복잡도는 n<sup>3</sup>이다
-* * *
-### 슈트라센 알고리즘 구현
-```{.python}
-import time
-
-
-print("A행렬의 각 크기를 입력하세요")
-A_n ,A_m = map(int,input().split()) # A_n ,A_m은 각 A행렬의 행과 열
-A = []
-for i in range(A_n):
-    A.append(list(map(int,input().split())))
-print("B행렬의 각 크기를 입력하세요")
-B_n, B_m = map(int,input().split()) # B_n ,B_m은 각 B행렬의 행과 열
-#  사실 행렬 곱셈에선 A의 행과 B의 열이 같아야해서 같은 변수로 해도 되지만 보기좋게 그냥 나누었다
-B = []
-for i in range(B_n):
-    B.append(list(map(int,input().split())))
-
-C = [[0]*B_m for _ in range(A_n)]  # 행렬 A와 B를 곱한 행렬을 저장하기 위해 0으로 배열을 먼저 초기화 
-
-start = time.time()
-
-for n in range(A_n):  
-    for k in range(B_m):
-        for m in range(A_m):  # B_n으로 해도 상관없다 같기 때문에
-            C[n][k] += A[n][m] * B[m][k]  # 그림으로 설명하기 
-print("결과값:")
-for c in C:
-    for i in c:
-        print(i,end=" ")
-    print()   
-
-print("기본 행렬 곱셈 알고리즘의 시간:",time.time()-start)
 ```  
 ### 코드 설명:  
 * 행렬 덧셈, 뺄셈  
