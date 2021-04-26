@@ -153,7 +153,7 @@ print("슈트라센 알고리즘 시간:",time.time()-start)
 ```  
 ### 코드 설명:  
 * 행렬 덧셈, 뺄셈  
-![image](https://user-images.githubusercontent.com/80373033/115869344-b420a080-a478-11eb-8540-c1c847af9b2b.png)  
+![image](https://user-images.githubusercontent.com/80373033/116014654-3a073c00-a671-11eb-8281-6a03aa4d04db.png)  
 위 사진은 행렬 덧셈과 뺄셈 함수를 구현한 것이다. 
 매게 변수로 받아온 A또은 B의 길이를 가져온다 이는 행(열)의 길이이다.  
 그리고는 결과값을 저장할 배열을 초기화한다. 
