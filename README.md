@@ -34,9 +34,9 @@ for c in C:
 print("기본 행렬 곱셈 알고리즘의 시간:",time.time()-start)
 ```
 #### 출력값:  
-![image](https://user-images.githubusercontent.com/80373033/116014406-1b547580-a670-11eb-9ecc-6d94fe2b6395.png)  
-8/8 행렬과 8/8 행렬을 곱했을때의 출력이다.
-![image](https://user-images.githubusercontent.com/80373033/115834943-b969f500-a450-11eb-908e-5ec3dd02bfeb.png)
+![image](https://user-images.githubusercontent.com/80373033/116014406-1b547580-a670-11eb-9ecc-6d94fe2b6395.png)   
+8/8 행렬과 8/8 행렬을 곱했을때의 출력이다.  
+![image](https://user-images.githubusercontent.com/80373033/115834943-b969f500-a450-11eb-908e-5ec3dd02bfeb.png)  
 
 위의 예제에서 처럼 4/4 행렬과 4/4행렬을 곱하면 8번의 곱셈과 4번의 뎃셈으로 구현된다.  
 그러면 사실상 덧셈은 곱셈에 비해 걸리는 시간이 낮아 묻히고 곱셈으로만 n<sup>3</sup>이 되어버린다  
@@ -181,8 +181,8 @@ print("슈트라센 알고리즘 시간:",time.time()-start)
 먼저 재귀함수를 끝내기 위한 조건문이 필요한데 행렬의 길이가 2이면 끝내는 걸로했다. 그래야 4/4 행렬들의 곱셈이면 7번의 곱셈이 호출되기때문이다.  
 미리 정의해돈 division함수를 사용해 4분할로 나누어준다 그리고 이제 M1-M7로 재귀함수를 이용해서 계속해서 나눠주고 C11-C22까지 더한 다음 마지막 conquer함수로 합쳐주면서 올라온다.  
 이것들이 재귀함수의 스택특성을 통해 결과값을 초래한다. 
-* 출력
-![image](https://user-images.githubusercontent.com/80373033/116014333-c9abeb00-a66f-11eb-9d9e-1c796f00e4c1.png)  
+* 출력  
+![image](https://user-images.githubusercontent.com/80373033/116014450-4d65d780-a670-11eb-9759-b93409d7ef23.png)  
 8/8 행렬과 8/8 행렬간의 곱셈입니다. 보시면 위에서 했던 결과와 같은 걸 볼 수 있습니다.
 
 * * *
