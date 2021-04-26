@@ -185,6 +185,7 @@ print("슈트라센 알고리즘 시간:",time.time()-start)
 ![image](https://user-images.githubusercontent.com/80373033/116014782-efd28a80-a671-11eb-8b7a-27e9d30cd8e7.png)  
 행(열)의 크기를 입력받고 각 A,B 리스트를 초기화한 다음 입력받은 값들을 넣어주고 solve 함수를 호출해준다.  
 그리고 return 값을 C로 받아주고 2중리스트이기에  for문을 이용해 각 리스트들의 요소들을 보기 좋게 출력해준다.  
+또한 실행 시간을 보기 위해 함수 호출 전에 time.time으로 현재 시간을 넣어주고 끝난뒤엔 다시 time.time에서 start를 빼주면 실행 시간이 출력된다.  
 * 출력값   
 ![image](https://user-images.githubusercontent.com/80373033/116014450-4d65d780-a670-11eb-9759-b93409d7ef23.png)  
 8/8 행렬과 8/8 행렬간의 곱셈입니다. 보시면 위에서 했던 결과와 같은 걸 볼 수 있습니다.
