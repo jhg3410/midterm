@@ -31,7 +31,7 @@ print()
 print("기본 행렬 곱셈 알고리즘의 시간:",time.time()-start)
 ```
 #### 출력값
-![image](https://user-images.githubusercontent.com/80373033/116014406-1b547580-a670-11eb-9ecc-6d94fe2b6395.png)
+![image](https://user-images.githubusercontent.com/80373033/116014406-1b547580-a670-11eb-9ecc-6d94fe2b6395.png)  
 8/8 행렬과 8/8 행렬을 곱했을때의 출력이다.
 ### 시간 복잡도
 만약 이 알고리즘으로 4/4 행렬과 4/4행렬을 곱하면 8번의 곱셈과 4번의 뎃셈으로 구현된다
@@ -138,20 +138,20 @@ print("슈트라센 알고리즘 시간:",time.time()-start)
 ```
 ### 코드 설명
 * 행렬 덧셈, 뺄셈
-![image](https://user-images.githubusercontent.com/80373033/116014654-3a073c00-a671-11eb-8281-6a03aa4d04db.png)
+![image](https://user-images.githubusercontent.com/80373033/116014654-3a073c00-a671-11eb-8281-6a03aa4d04db.png)  
 위 사진은 행렬 덧셈과 뺄셈 함수를 구현한 것이다.
 매게 변수로 받아온 A또은 B의 길이를 가져온다 이는 행(열)의 길이이다.
 그리고는 결과값을 저장할 배열을 초기화한다.
 다음 단순히 A와 B배열의 각 요소들을 가져와 더해서 넣어주면 끝이다.
 뺼셈은 각 요소들을 빼서 넣어주면 된다.
 * 행렬 곱셈
-![image](https://user-images.githubusercontent.com/80373033/115869958-90aa2580-a479-11eb-9379-8b3101cb9146.png)
+![image](https://user-images.githubusercontent.com/80373033/115869958-90aa2580-a479-11eb-9379-8b3101cb9146.png)  
 위 사진은 행렬 곱셈이다. 한 줄 반복문을 사용해 결과값을 넣어줄 배열을 초기화한다.
 3중반복문을 사용해 처음보면 어려울 수 있지만 예시를 들어놓고 0,0부터 하나씩 순서대로
 대입해보면
 쉽게 구할 수 있다.
 * 행렬 분할
-![image](https://user-images.githubusercontent.com/80373033/115870498-4a08fb00-a47a-11eb-9373-8c4c8d7253d6.png)
+![image](https://user-images.githubusercontent.com/80373033/115870498-4a08fb00-a47a-11eb-9373-8c4c8d7253d6.png)  
 매개 변수로 받아온 행렬을 4분할 하는 함수코드이다.
 행렬의 길이를 가져온다. 그리고 2로 나눈값을 m에 저장하고 m의 크기만큼 2중 리스트를 만
 들어 초기화한다.
@@ -159,14 +159,14 @@ print("슈트라센 알고리즘 시간:",time.time()-start)
 분할되다보니 각 영역에 맞게 들어가야한다. 그래서 m을 더해서 그 영역에 맞는 값들을 넣어
 준다.
 * 행렬 합치기
-![image](https://user-images.githubusercontent.com/80373033/115986218-25339580-a5ea-11eb-9660-349d0b538f5e.png)
+![image](https://user-images.githubusercontent.com/80373033/115986218-25339580-a5ea-11eb-9660-349d0b538f5e.png)  
 새로 만들어질 행렬은 패러미터로 받아오는 행렬들을 합치기에 길이가 2배여야해서 m을 만든
 다
 새로운 리스트를 2중으로 m의 크기만큼 초기화하고 이제 새로운 리스트의 각 인자값에
 받아온 행렬들을 하나씩 각 자리에 맞게 넣어야한다. 그래서 n을 각각 더해줘야 자리에 맞게
 들어간다.
 * 문제 해결 함수
-![image](https://user-images.githubusercontent.com/80373033/115994843-ab180680-a613-11eb-87ba-54835b2b8b1b.png)
+![image](https://user-images.githubusercontent.com/80373033/115994843-ab180680-a613-11eb-87ba-54835b2b8b1b.png)  
 재귀함수를 사용한다.
 먼저 재귀함수를 끝내기 위한 조건문이 필요한데 행렬의 길이가 2이면 끝내는 걸로했다. 그
 래야 4/4 행렬들의 곱셈이면 7번의 곱셈이 호출되기때문이다.
@@ -175,7 +175,7 @@ print("슈트라센 알고리즘 시간:",time.time()-start)
 올라온다.
 이것들이 재귀함수의 스택특성을 통해 결과값을 초래한다.
 * 입력과 출력(main)
-![image](https://user-images.githubusercontent.com/80373033/116014782-efd28a80-a671-11eb-8b7a-27e9d30cd8e7.png)
+![image](https://user-images.githubusercontent.com/80373033/116014782-efd28a80-a671-11eb-8b7a-27e9d30cd8e7.png)  
 행(열)의 크기를 입력받고 각 A,B 리스트를 초기화한 다음 입력받은 값들을 넣어주고
 solve 함수를 호출해준다.
 그리고 return 값을 C로 받아주고 2중리스트이기에 for문을 이용해 각 리스트들의 요소들
@@ -183,7 +183,7 @@ solve 함수를 호출해준다.
 또한 실행 시간을 보기 위해 함수 호출 전에 time.time으로 현재 시간을 넣어주고 끝난뒤
 엔 다시 time.time에서 start를 빼주면 실행 시간이 출력된다.
 * 출력값
-![image](https://user-images.githubusercontent.com/80373033/116014450-4d65d780-a670-11eb-9759-b93409d7ef23.png)
+![image](https://user-images.githubusercontent.com/80373033/116014450-4d65d780-a670-11eb-9759-b93409d7ef23.png)  
 8/8 행렬과 8/8 행렬간의 곱셈입니다. 보시면 위에서 했던 결과와 같은 걸 볼 수 있습니다
 .
 #### 시간복잡도
@@ -194,9 +194,9 @@ n<sup>2.807</sup> 정도가 소요되어서 기본 행렬곱셈보다 더 빠른
 ### 기본 행렬 곱셈 알고리즘과 슈트라센 알고리즘의 시간차이
 16/16행렬과 16/16행렬을 곱했을때의 각 시간입니다
 * 기본 행렬 곱셈
-![image](https://user-images.githubusercontent.com/80373033/115995721-51b1d680-a617-11eb-93c8-7ce4b7ba1727.png)
+![image](https://user-images.githubusercontent.com/80373033/115995721-51b1d680-a617-11eb-93c8-7ce4b7ba1727.png)  
 * 슈트라센
-![image](https://user-images.githubusercontent.com/80373033/115995835-ca189780-a617-11eb-942e-1544b256465a.png)
+![image](https://user-images.githubusercontent.com/80373033/115995835-ca189780-a617-11eb-942e-1544b256465a.png)  
 보면은 우리가 유추한 결과와 다르다.
 왜냐면 기본 행렬곱셈에서의 행렬 덧셈보다 슈트라센에서의 행렬 덧셈이 더 많이 연산되기떄
 문이다.
@@ -204,7 +204,7 @@ n<sup>2.807</sup> 정도가 소요되어서 기본 행렬곱셈보다 더 빠른
 그럴려면 n이 엄청 커서 3제곱 한번이 많은 2제곱보다 커야하기때문이다.
 * * *
 ### 구현 후 의문점을 느끼고 어려움을 겪은 일
-![image](https://user-images.githubusercontent.com/80373033/115874594-3a3fe580-a47f-11eb-80d6-b75acf8b19c5.png)
+![image](https://user-images.githubusercontent.com/80373033/115874594-3a3fe580-a47f-11eb-80d6-b75acf8b19c5.png)  
 처음엔 solve문을 이렇게 짰었다 그러고는 많은 예시를 넣어도 값이 제대로 나오는 것을 확
 인하고 끝냈다 생각해 markdown 작성 중이였다.
 그러던중 의문점이 생겼다. 이러면 8/8 행렬을 넣어도 if 문이 7번 나온다는 것이다.
@@ -254,18 +254,18 @@ input()값:
 바꾸는게 더 좋다 생각
 했지만 막상 출력하니 3중리스트라 내가 원하는 형태로 출력하려면 너무 코드가 더러워진다
 생각했다.
-![잘못된 출력(result_lst)](https://userimages.githubusercontent.com/80373033/115823176-ced72300-a440-11eb-8ec3-11aba920292f.png)
+![잘못된 출력(result_lst)](https://userimages.githubusercontent.com/80373033/115823176-ced72300-a440-11eb-8ec3-11aba920292f.png)  
 그래서 result_lst를 쓰지않고 그냥 각각 분할된 C리스들을 바로 출력하면 더 깨끗하겠다
 생각
 각 C리스트들을 출력하면 다음과 같다
-![c11, c22, c33,c44 출력값](https://userimages.githubusercontent.com/80373033/115823087-abac7380-a440-11eb-9d66-aca5d056baf6.png)
+![c11, c22, c33,c44 출력값](https://userimages.githubusercontent.com/80373033/115823087-abac7380-a440-11eb-9d66-aca5d056baf6.png)  
 얘네들을 행렬방식으로 출력하기 위해선
 C11[0]-> C12[0] -> C11[1]->C12[1]->C21[0]->C22[0]->C21[1]->C22[1]
 이렇게만 출력하면 리스트형태로 되어서 안의 index또한 표현할려면 2중리스트 모두 참조해
 야함
 이 순서로 진행 되어야 함
 한 줄 반복문을 이용해서 출력문 구현
-![image](https://user-images.githubusercontent.com/80373033/115995912-2d0a2e80-a618-11eb-9884-42d54caa0774.png)
+![image](https://user-images.githubusercontent.com/80373033/115995912-2d0a2e80-a618-11eb-9884-42d54caa0774.png)  
 결과적으로 conquer함수를 구현하고 합치다보니 위의 노력들이 의미가 없었다 그저 결과함
 수를 2중반복문으로 참조하면 원하는 형태로 나왔다.
 그래도 위의 노력도 하나의 공부이고 나중에 무조건 도움이 될거라 생각하고 놔둔다.
