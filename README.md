@@ -43,7 +43,7 @@ print("기본 행렬 곱셈 알고리즘의 시간:",time.time()-start)
 그래서 기본적인 행렬곱셈의 시간복잡도는 n<sup>3</sup>이다
 * * *
 ### 슈트라센 알고리즘 구현
-```{.python}
+```python
 import time
 
 def matrix_add(A,B):  # 행렬 덧셈
